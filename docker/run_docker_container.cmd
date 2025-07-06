@@ -12,7 +12,7 @@ for /F "tokens=1*" %%A in ("%*") DO (
    SET IMAGE_RUN_ARGS=%%B
 )
 
-if "%IMAGE_NAME%" == [] (
+if [%IMAGE_NAME%] == [] (
     echo Usage: run_docker_container.cmd ^<image name^> [arguments ...]
     echo:
     echo Error: No image name provided.

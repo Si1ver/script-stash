@@ -16,21 +16,21 @@ for /F "tokens=1-3*" %%A in ("%*") DO (
    SET IMAGE_BUILD_ARGS=%%D
 )
 
-if "%BUILD_DIRECTORY%" == [] (
+if [%BUILD_DIRECTORY%] == [] (
     echo Usage: build_docker_image.cmd ^<build directory^> ^<docker file^> ^<image tag^> [arguments ...]
     echo:
     echo Error: No build directory provided.
     exit /b 1
 )
 
-if "%DOCKER_FILE%" == [] (
+if [%DOCKER_FILE%] == [] (
     echo Usage: build_docker_image.cmd ^<build directory^> ^<docker file^> ^<image tag^> [arguments ...]
     echo:
     echo Error: No Dockerfile provided.
     exit /b 1
 )
 
-if "%IMAGE_TAG%" == [] (
+if [%IMAGE_TAG%] == [] (
     echo Usage: build_docker_image.cmd ^<build directory^> ^<docker file^> ^<image tag^> [arguments ...]
     echo:
     echo Error: No image tag provided.

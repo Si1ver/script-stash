@@ -12,7 +12,7 @@ for /F "tokens=1*" %%A in ("%*") DO (
    SET DIVE_RUN_ARGS=%%B
 )
 
-if "%IMAGE_NAME%" == [] (
+if [%IMAGE_NAME%] == [] (
     echo Usage: analyze_docker_image.cmd ^<image name^> [arguments ...]
     echo:
     echo Error: No image name provided.
