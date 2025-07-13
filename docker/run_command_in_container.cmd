@@ -1,6 +1,7 @@
 @echo off
-rem This script is used to run a Docker container while developing or testing it.
-rem Usage: run_docker_container.cmd (image name) [arguments ...]
+rem This script is used to run a command in a Docker container.
+rem Container will be deleted after exit.
+rem Usage: run_command_in_container.cmd (image name) [arguments ...]
 
 setlocal enabledelayedexpansion
 
@@ -13,15 +14,15 @@ for /F "tokens=1*" %%A in ("%*") DO (
 )
 
 if [%IMAGE_NAME%] == [] (
-    echo Usage: run_docker_container.cmd ^<image name^> [arguments ...]
+    echo Usage: run_command_in_container.cmd ^<image name^> [arguments ...]
     echo:
     echo Error: No image name provided.
     exit /b 1
 )
 
 echo ---------------------------------------------------
-echo Inspecting image '%IMAGE_NAME%':
-docker image inspect %IMAGE_NAME%
+echo Checking docker image '%IMAGE_NAME%':
+docker inspect --type image --format "{{index .RepoDigests 0}}" %IMAGE_NAME%
 
 if %ERRORLEVEL% neq 0 (
     echo Error: Docker image '%IMAGE_NAME%' not found.
