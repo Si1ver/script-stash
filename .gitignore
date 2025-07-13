@@ -1,0 +1,5 @@
+# Compiled tools.
+/bin/*.exe
+
+# Zig cache directory.
+.zig-cache/
